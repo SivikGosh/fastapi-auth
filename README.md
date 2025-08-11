@@ -1,2 +1,60 @@
-# fastapi-auth
-FastAPI auth service.
+# FastAPI Auth Service
+FastAPI auth service. Python 3.12.
+
+<br>
+
+## 🛠 Develop Mode
+
+### Install and use
+Clone the repo and enter into the root folder
+```bash
+git clone git@github.com:SivikGosh/fastapi-auth.git
+cd fastapi-auth/
+```
+
+Create an environment
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+```
+
+Install dependencies
+```bash
+pip3 install .[div]
+```
+
+Start
+```bash
+uvicorn src.main:app --reload
+```
+
+Build DB container (optional)
+```bash
+cp .env.example .env
+docker compose -f docker-compose.db.yaml up -d
+```
+
+### URLs
+
+| url                  | description          |
+| -------------------- | -----------          |
+| localhost:8000       | Check DB connection. |
+| localhost:8000/docs  | Swagger UI.          |
+| localhost:8000/redoc | ReDoc.               |
+<!-- |                      |                      | -->
+
+### Commands
+| command            | description                          |
+| ------------------ | ------------------------------------ |
+| pre-commit install | Install pre-commit hooks file.       |
+| pipdeptree         | Show dependency tree.                |
+<!-- |                    |                                      | -->
+
+<br>
+
+<div align="right">
+
+## Author's contact
+<a href='https://t.me/sivikgosh' target='_blank'><img src='https://img.shields.io/badge/SivikGosh-white?style=flat-square&logo=Telegram&logoColor=26A5E4'></a>
+
+</div>
