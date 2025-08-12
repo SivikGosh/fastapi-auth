@@ -3,8 +3,10 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .dependencies import get_async_db
+from .users import router as users_router
 
 app = FastAPI()
+app.include_router(users_router)
 
 
 @app.get('/')
