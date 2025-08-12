@@ -1,12 +1,13 @@
-from sqlalchemy import Boolean, Integer, String
+from fastapi_users.db import SQLAlchemyBaseUserTable
+from sqlalchemy import Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, validates
 
 from src.database import Base
 
-from .validators import email, phone
+from .validators import email
 
 
-class User(Base):
+class User(SQLAlchemyBaseUserTable, Base):
     __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(
@@ -15,40 +16,14 @@ class User(Base):
         index=True,
     )
     username: Mapped[str] = mapped_column(
-        String,
+        String(length=26),
         unique=True,
         index=True,
         nullable=False,
-    )
-    email: Mapped[str] = mapped_column(
-        String,
-        unique=True,
-        index=True,
-        nullable=True,
-    )
-    phone: Mapped[str] = mapped_column(
-        String,
-        unique=True,
-        index=True,
-        nullable=True,
-    )
-    password: Mapped[str] = mapped_column(
-        String,
-        nullable=False,
-    )
-    is_active: Mapped[bool] = mapped_column(
-        Boolean,
-        default=True,
     )
 
     @validates('email')
     def validate_email(self, field, value):
         if not email(value):
             raise ValueError('Invalid email format')
-        return value
-
-    @validates('phone')
-    def validate_phone(self, field, value):
-        if not phone(value):
-            raise ValueError('Invalid phone number format')
         return value
