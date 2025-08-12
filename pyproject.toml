@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fastapi-auth"
-version = "0.2.2a"
+version = "0.2.3"
 description = "FastAPI auth service."
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.116",
+    "fastapi-users[sqlalchemy]>=14.0",
     "uvicorn>=0.35",
     "python-dotenv>=1.1",
     "alembic>=1.16",
