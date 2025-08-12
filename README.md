@@ -20,7 +20,7 @@ source venv/bin/activate
 
 Install dependencies
 ```bash
-pip3 install .[div]
+pip3 install .[dev]
 ```
 
 Start
