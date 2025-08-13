@@ -1,6 +1,10 @@
 # FastAPI Auth Service
 FastAPI auth service. Python 3.12.
 
+## ! Warning
+- **username** in user credentials for login is an user email, actually, not username.
+- When you login, received HTTP status "No content". It's normal, because token saving in cookies.
+
 <br>
 
 ## 🛠 Develop Mode
