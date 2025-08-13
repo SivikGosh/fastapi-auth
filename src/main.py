@@ -2,10 +2,12 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from .auth import router as auth_router
 from .dependencies import get_async_db
 from .users import router as users_router
 
 app = FastAPI()
+app.include_router(auth_router)
 app.include_router(users_router)
 
 
