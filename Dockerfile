@@ -8,8 +8,7 @@ COPY alembic.ini .
 COPY pyproject.toml .
 COPY .env .
 
-# RUN ls -a && sleep 600
-
+RUN python -m pip install --upgrade pip
 RUN pip install .
 
 COPY entrypoint.sh /app/entrypoint.sh
