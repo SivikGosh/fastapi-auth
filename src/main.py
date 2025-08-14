@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -7,7 +8,16 @@ from .config import SITE_URL
 from .dependencies import get_async_db
 from .users import router as users_router
 
-app = FastAPI()
+app = FastAPI(swagger_ui_parameters={'withCredentials': True})
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[SITE_URL],
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
+
 app.include_router(auth_router)
 app.include_router(users_router)
 
