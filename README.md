@@ -7,6 +7,30 @@ FastAPI auth service. Python 3.12.
 
 <br>
 
+## Local build
+
+Clone the repo and enter into the root folder
+```bash
+git clone git@github.com:SivikGosh/fastapi-auth.git
+cd fastapi-auth/
+```
+
+Copy environments
+```bash
+cp .env.example .env
+```
+
+Change **DB_HOST** value from *localhost* to *db*
+
+Start building
+```bash
+docker compose up -d
+```
+
+Service will be available on http://localhost.
+
+<br>
+
 ## 🛠 Develop Mode
 
 ### Install and use

@@ -1,0 +1,36 @@
+services:
+
+  db:
+    image: postgres:16
+    container_name: 'fastapi-auth-db'
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  service:
+    build:
+      context: .
+    container_name: 'fastapi-auth-service'
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+    restart: always
+
+  nginx:
+    image: nginx:1.19.3
+    container_name: 'fastapi-auth-nginx'
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - service
+
+volumes:
+  db_data:

@@ -12,3 +12,5 @@ DB_PASS = os.getenv('DB_PASS', 'postgres')
 
 AUTH_SECRET_KEY = os.getenv('AUTH_SECRET_KEY', 'secret_key')
 TOKEN_LIFETIME_SECONDS = 3600
+
+SITE_URL=os.getenv('SITE_URL', 'http://localhost')
